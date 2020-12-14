@@ -1,0 +1,58 @@
+SELECT from WORLD Tutorial
+
+1. Introduction
+SELECT name, continent, population FROM world
+
+2. Large Countries
+SELECT name FROM world
+WHERE population >= 200000000
+
+3. Per Capita GDP
+select name, gdp/population from world
+where population >= 200000000
+
+4. South America In Millions
+select name, population/1000000 from world
+where continent = 'South America'
+
+5. France, Germany, Italy
+select name, population from world
+where name IN ('France', 'Germany', 'Italy')
+
+6. United
+select name from world
+where name like 'United%'
+
+7. Two Ways to be Big
+select name, population, area from world
+where population >=250000000 or area >= 3000000
+
+8. One or the other (but not both) Large Countries
+select name, population, area from world
+where population >=250000000 xor area >= 3000000
+
+9. Rounding
+select name, round(population/1000000,2), round(gdp/1000000000,2) from world
+where continent = 'South America'
+
+10. Trillion Dollar Economies
+select name, round(gdp/population, -3) from world
+where gdp >= 1000000000000
+
+11. Name and Capital have the Same Length
+SELECT name,
+       capital
+  FROM world
+ WHERE length(name) = length(capital)
+
+12. Matching Name and Capital
+SELECT name,capital
+FROM world
+WHERE LEFT(name,1) = LEFT(capital,1) and name <> capital
+
+13. All the Vowels
+SELECT name
+   FROM world
+WHERE name LIKE '%a%' and name LIKE '%e%' and name LIKE '%i%'
+and name LIKE '%o%' and name LIKE '%u%'
+  AND name NOT LIKE '% %'
