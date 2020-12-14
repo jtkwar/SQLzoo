@@ -1,0 +1,63 @@
+SELECT from Nobel Tutorial
+
+nobel(yr, subject, winner)
+
+1. Winners from 1950
+SELECT yr, subject, winner
+FROM nobel
+WHERE yr = 1950
+
+2. 1962 Literature
+SELECT winner
+  FROM nobel
+ WHERE yr = 1962
+   AND subject = 'Literature'
+
+3. Albert Einstein
+select yr, subject from nobel
+where winner = 'Albert Einstein'
+
+4. Recent Peace Prizes
+select winner from nobel
+where subject = 'Peace' and yr >= 2000
+
+5. Literature in the 1980s
+select yr, subject, winner from nobel
+where subject = 'Literature' and yr >= 1980 and yr <= 1989
+
+6. Only Presidents
+SELECT * FROM nobel
+ WHERE winner in ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter', 'Barack Obama')
+
+7. First Name: John
+select winner from nobel 
+where winner like 'John%'
+
+8. Chemistry and Physics from different years
+Show the year, subject, and name of Physics winners for 1980 together with the Chemistry winners for 1984.
+SELECT yr, subject, winner from nobel
+WHERE (subject='Physics' and yr=1980) xor (subject='Chemistry' and yr=1984)
+
+9. Exclude Chemists and Medics
+select yr, subject, winner from nobel
+where subject NOT IN ('Chemistry', 'Medicine') and yr=1980
+
+10. Early Medicine, Late Literature
+select * from nobel
+where (subject='Medicine' and yr<1910) xor (subject='Literature' and yr>=2004)
+
+11. Umlaut
+Non-ASCII characters
+select * from nobel
+where winner like 'peter gr%nberg'
+
+12. Apostrophe
+SELECT *
+FROM nobel
+WHERE winner = 'Eugene O''Neill'
+
+13. Knights of the Realm
+List the winners, year and subject where the winner starts with Sir. Show the the most recent first, then by name order.
+select winner, yr, subject from nobel
+where winner like 'sir%'
+order by yr desc, winner
