@@ -61,3 +61,13 @@ List the winners, year and subject where the winner starts with Sir. Show the th
 select winner, yr, subject from nobel
 where winner like 'sir%'
 order by yr desc, winner
+
+14. Chemistry and Physics Last
+The expression subject IN ('Chemistry','Physics') can be used as a value - it will be 0 or 1.
+
+Show the 1984 winners and subject ordered by subject and winner name; but list Chemistry and Physics last.
+
+SELECT winner, subject
+FROM nobel
+WHERE yr=1984
+ORDER BY subject IN ('Physics','Chemistry'),subject,winner
